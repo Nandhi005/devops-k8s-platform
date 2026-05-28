@@ -24,7 +24,7 @@ jobs:
 
     - name: Build Image
       run: |
-        docker build -t YOUR_DOCKERHUB/devops-backend:${{ github.sha }} ./app/backend
+        docker build -t nandheeswaran/devops-backend:${{ github.sha }} ./app/backend
 
     - name: Install Trivy
       run: |
@@ -37,8 +37,8 @@ jobs:
 
     - name: Run Trivy Scan
       run: |
-        trivy image --exit-code 1 --severity HIGH,CRITICAL YOUR_DOCKERHUB/devops-backend:${{ github.sha }}
+        trivy image --exit-code 1 --severity HIGH,CRITICAL nandheeswaran/devops-backend:${{ github.sha }}
 
     - name: Push Image
       run: |
-        docker push YOUR_DOCKERHUB/devops-backend:${{ github.sha }}
+        docker push nandheeswaran/devops-backend:${{ github.sha }}
